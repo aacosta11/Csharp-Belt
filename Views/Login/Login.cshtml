@@ -1,0 +1,20 @@
+@{Layout="_MetaLayout";}
+<partial name="LoginNavPartial" />
+<div class="x Wfull" id="loginForms">
+    <div class="g G1col x1 RG2">
+        <h2 class="TAcent">register</h2>
+        <partial name="RegFormPartial">
+    </div>
+    <div class="x Xdir-col x1 RG2">
+        <h2 class="TAcent">log in</h2>
+        <partial name="LogFormPartial"/>
+    </div>
+</div>
+<script>
+    window.addEventListener("resize", event => {
+        if (window.innerWidth<575){
+            document.getElementById("loginForms").style = "flex-direction: column;row-gap:2rem";
+        } else {document.getElementById("loginForms").style = "flex-direction: row;";}
+    }
+    )
+</script>

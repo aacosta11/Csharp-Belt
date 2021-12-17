@@ -1,0 +1,35 @@
+@{Layout="_MetaLayout";}
+@model Activity
+
+<partial name="HomeNavPartial" />
+
+<div style="padding: 2rem;" class="g G1col RG1">
+    <div class="Wmost x JCspace-between">
+        <h1>@Model.ActivityName</h1>
+            @if (Model.UserId == Model.TempUserId)
+            {
+                <td><a href="/home/@Model.UserId/delete-activity/@Model.ActivityId">delete</a></td>
+            } else if (Model.ActivityParticipants.Any(dis => dis.UserId == Model.TempUserId&&dis.ActivityId==Model.ActivityId)) {
+                <td><a href="/home/@Model.UserId/un-add-participant/@Model.ActivityId">un-add</a></td>
+            } else {
+                <td><a href="/home/@Model.UserId/add-participant/@Model.ActivityId">add</a></td>
+            }
+
+    </div>
+    <h3>Event Coordinator: @Model.ActivityOwner.Name</h3>
+    <div style="padding-left: 2rem;" class="g G1col RG2">
+        <div>
+            <h3>Description: </h3>
+            <p>@Model.Description</p>
+        </div>
+        <div class="g G1col RG1">
+            <h3>Participants</h3>
+            <ul style="padding-left: 3rem;">
+                @foreach(Participant prt in Model.ActivityParticipants)
+                {
+                    <li>@prt.UserAsParticipant.Name</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

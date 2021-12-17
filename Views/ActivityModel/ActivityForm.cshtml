@@ -1,0 +1,64 @@
+@{Layout="_MetaLayout";}
+@model Activity
+<partial name="HomeNavPartial" />
+<h2 class="TAcent" style="margin: 2rem;">Add an Activity!</h2>
+<div class="x Wfill JCcenter">
+    <form asp-action="AddActivity" method="POST" class="g G1col Wsum RG2">
+        <div class="g G1col RG1">
+            <div class="g G1col">
+                <div class="x">
+                    <label asp-for="ActivityName"></label>
+                    <span id="actNameL" style="color:red;"></span>
+                </div>
+                <input asp-for="ActivityName" class="">
+            </div>
+            <div class="g G1col">
+                <div class="x">
+                    <label asp-for="DateAndTime"></label>
+                    <span id="logPwL" style="color:red;"></span>
+                </div>
+                <input asp-for="DateAndTime" class="">
+            </div>
+            <div class="g G1col">
+                <div class="x">
+                    <label asp-for="Duration"></label>
+                    <span id="durL" style="color:red;"></span>
+                </div>
+                <div class="x sum-C-gap">
+                    <input asp-for="Duration" class="x1" min="1" value="1">
+                    <select asp-for="timeUnit" id="timeUnit">
+                        <option>hours</option>
+                        <option>minutes</option>
+                        <option value="days">days</option>
+                    </select>
+                </div>
+            </div>
+            <div class="g G1col">
+                <div class="x">
+                    <label asp-for="Description"></label>
+                    <span id="descL" style="color:red;"></span>
+                </div>
+                <textarea asp-for="Description" style="resize:vertical;padding:.5rem;" rows="5"></textarea>
+            </div>
+        </div>
+        <div class="g G1col">
+            <input type="submit" value="add" id="formsubmit">
+            <p>&nbsp;</p>
+            <span asp-validation-for="ActivityName" style="color:red;" id="actNameV"></span>
+            <span asp-validation-for="DateAndTime" style="color:red;" id="datV"></span>
+            <span asp-validation-for="Duration" style="color:red;" id="durV"></span>
+            <span asp-validation-for="Description" style="color:red;" id="descV"></span>
+        </div>
+    </form>
+</div>
+<script>
+if(document.getElementById("actNameV").innerText.length>0){
+    document.getElementById("actNameL").innerHTML = "*";
+}
+if(document.getElementById("datV").innerText.length>0){
+    document.getElementById("datL").innerHTML = "*";
+}
+if(document.getElementById("durV").innerText.length>0){
+    document.getElementById("durL").innerHTML = "*";
+}
+</script>

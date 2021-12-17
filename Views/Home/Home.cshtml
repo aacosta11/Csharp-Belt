@@ -1,0 +1,102 @@
+@{
+    Layout = "_MetaLayout";
+}
+@model User
+<partial name="HomeNavPartial" />
+<div class="g G1col RG2 Wfull">
+    <h2>Welcome, @Model.Name</h2>
+    @if (Model.AllActivities.Count == 0)
+    {
+        <p class="TAcent">no activities :(</p>
+    }
+    else
+    {
+        <table class="Wmost centeredX">
+            <thead>
+                <tr class="TAleft">
+                    <th>Activity</th>
+                    <th id="level2">Date And Time</th>
+                    <th id="level3">Duration</th>
+                    <th id="level4">Event Coordinator</th>
+                    <th id="level5">No. of Participants</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(Activity act in Model.AllActivities){
+                    @if(act.DateAndTime > DateTime.Now)
+                    {
+                    
+                    <tr class="TAleft">
+                        <td><a href="/home/@Model.UserId/activity/@act.ActivityId">@act.ActivityName</a></td>
+                        <td id="level2val">@act.DateAndTime.ToString("g")</td>
+                        <td id="level3val">@act.Duration @act.timeUnit</td>
+                        <td id="level4val">@act.ActivityOwner.Name</td>
+                        @if (act.ActivityParticipants.Count > 0)
+                        {
+                            <td id="level5val">@act.ActivityParticipants.Count</td>
+                        } else { 
+                            <td id="level5val">none</td>
+                        }
+                        @if (Model.UserId == act.UserId)
+                        {
+                            <td><a href="/home/@Model.UserId/delete-activity/@act.ActivityId">delete</a></td>
+                        } else if (act.ActivityParticipants.Any(dis => dis.UserId == Model.UserId)) {
+                        
+                            <td><a href="/home/@Model.UserId/un-add-participant/@act.ActivityId">un-add</a></td>
+                        } else {<td><a href="/home/@Model.UserId/add-participant/@act.ActivityId">add</a></td>
+                            @* @foreach(Participant x in Model.ActivitiesParticipatingIn)
+                            {
+                                int multiplier = 1;
+                                if (x.ActivityOfParticipant.timeUnit=="minute"){multiplier = 60;}
+                                if (x.ActivityOfParticipant.timeUnit=="days"){multiplier = 3600;}
+                                x.ActivityOfParticipant.Duration = x.ActivityOfParticipant.Duration * multiplier;
+                                multiplier = 1;
+                                if (act.timeUnit=="minute"){multiplier = 60;}
+                                if (act.timeUnit=="days"){multiplier = 3600;}
+                                act.Duration = act.Duration * multiplier;
+                                
+                                if (act.DateAndTime > x.ActivityOfParticipant.DateAndTime &&
+                                act.DateAndTime < x.ActivityOfParticipant.DateAndTime.AddMinutes(x.ActivityOfParticipant.Duration))
+                                {
+                                    <p>u are busy at that time... plz un add the other one</p>
+                                } else {<td><a href="/home/@Model.UserId/add-participant/@act.ActivityId">add</a></td>}
+                            } *@
+                            
+
+                        }
+                    </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    }
+    <a href="/home/@Model.UserId/new-activity" class="centeredX">add another?</a>
+</div>
+<script>
+    document.querySelector("#level5").style = window.innerWidth < 850 ? "display: none;" : "display: ''";
+    document.querySelector("#level5val").style = window.innerWidth < 850 ? "display: none;" : "display: ''";
+
+    document.querySelector("#level4").style = window.innerWidth < 625 ? "display: none;" : "display: ''";
+    document.querySelector("#level4val").style = window.innerWidth < 625 ? "display: none;" : "display: ''";
+
+    document.querySelector("#level3").style = window.innerWidth < 500 ? "display: none;" : "display: ''";
+    document.querySelector("#level3val").style = window.innerWidth < 500 ? "display: none;" : "display: ''";
+
+    document.querySelector("#level2").style = window.innerWidth < 300 ? "display: none;" : "display: ''";
+    document.querySelector("#level2val").style = window.innerWidth < 300 ? "display: none;" : "display: ''";
+
+    window.addEventListener("resize", event => {
+        document.querySelector("#level5").style = window.innerWidth < 850 ? "display: none;" : "display: ''";
+        document.querySelector("#level5val").style = window.innerWidth < 850 ? "display: none;" : "display: ''";
+
+        document.querySelector("#level4").style = window.innerWidth < 625 ? "display: none;" : "display: ''";
+        document.querySelector("#level4val").style = window.innerWidth < 625 ? "display: none;" : "display: ''";
+
+        document.querySelector("#level3").style = window.innerWidth < 500 ? "display: none;" : "display: ''";
+        document.querySelector("#level3val").style = window.innerWidth < 500 ? "display: none;" : "display: ''";
+
+        document.querySelector("#level2").style = window.innerWidth < 300 ? "display: none;" : "display: ''";
+        document.querySelector("#level2val").style = window.innerWidth < 300 ? "display: none;" : "display: ''";
+    })
+</script>

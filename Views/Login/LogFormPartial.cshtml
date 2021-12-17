@@ -1,0 +1,35 @@
+@model LoginUser
+<div class="x Wfill JCcenter">
+    <form asp-action="Login" method="POST" class="g G1col Wsum RG2">
+        <div class="g G1col RG1">
+            <div class="g G1col">
+                <div class="x">
+                    <label asp-for="LogEmail"></label>
+                    <span id="logEmailL" style="color:red;"></span>
+                </div>
+                <input asp-for="LogEmail" class="">
+            </div>
+            <div class="g G1col">
+                <div class="x">
+                    <label asp-for="LogPassword"></label>
+                    <span id="logPwL" style="color:red;"></span>
+                </div>
+                <input asp-for="LogPassword" class="">
+            </div>
+        </div>
+        <div class="g G1col">
+            <input type="submit" value="login" id="formsubmit">
+            <p>&nbsp;</p>
+            <span asp-validation-for="LogEmail" style="color:red;" id="emailV"></span>
+            <span asp-validation-for="LogPassword" style="color:red;" id="pwV"></span>
+        </div>
+    </form>
+</div>
+<script>
+if(document.getElementById("emailV").innerText.length>0){
+    document.getElementById("logEmailL").innerHTML = "*";
+}
+if(document.getElementById("pwV").innerText.length>0){
+    document.getElementById("logPwL").innerHTML = "*";
+}
+</script>

@@ -1,0 +1,157 @@
+* {margin: 0;padding: 0;box-sizing: border-box;font-family: sans-serif;}
+
+input {
+    border: 1px solid gainsboro;
+    padding: 0 .5rem;
+    height: 2rem;
+    background-image: none;
+    outline: none;
+    transition: .3s ease;
+}
+input:focus {
+    transform: scale(101%);
+    outline: 1px solid black;
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.5);
+}
+/* button */
+#formsubmit {
+    background-color: silver;
+    box-shadow: 5px 5px black;
+    transition: .3s ease;
+}
+#formsubmit:hover {
+    transform: scale(102%);
+    box-shadow: 8px 8px blue;
+}
+/* _NavLayout.cshtml */
+#nav {
+    height: auto;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    padding: .5rem 2rem;
+    position: relative;
+    top: .25rem;
+    box-shadow: 0 -2rem 5rem 0 rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    margin-bottom: 3rem;
+}
+/* _MetaLayout.cshtml */
+#body {
+    background-color:ghostwhite;
+    padding-bottom: 3rem;
+}
+/* --------------------------------- DISPLAY -------------------------------- */
+.x {
+    display: flex;
+}
+.g {
+    display: grid;
+}
+/* ---------------------------------- WIDTH --------------------------------- */
+.Wfull {
+    width: 100vw;
+}
+.Wfill {
+    width: 100%;
+}
+.Wsum {
+    width: 60%;
+}
+.Wmost {
+    width: 80%;
+}
+/* --------------------------------- HEIGHT --------------------------------- */
+.Hfull {
+    height: 100vw;
+}
+.Hfill {
+    height: 100%;
+}
+/* --------------------------------- MARGIN --------------------------------- */
+.centeredX {
+    margin: 0 auto;
+}
+.centeredY {
+    margin: auto 0;
+}
+/* ---------------------------------- TEXT ---------------------------------- */
+.TAcent {
+    text-align: center;
+}
+.TAleft {
+    text-align: left;
+}
+/* ----------------------------------- GAP ---------------------------------- */
+.RG1 {
+    row-gap: 1rem;
+}
+.RG2 {
+    row-gap: 2rem;
+}
+.CG1 {
+    column-gap: 1rem;
+}
+.CG2 {
+    column-gap: 2rem;
+}
+/* -------------------------------------------------------------------------- */
+/*                                    FLEX                                    */
+/* -------------------------------------------------------------------------- */
+
+/* ----------------------------- flex-direction ----------------------------- */
+.Xdir-col {
+    flex-direction: column;
+}
+.Xdir-row {
+    flex-direction: row;
+}
+/* ---------------------------- flex (width size) --------------------------- */
+.x1 {
+    flex: 1;
+}
+.x2 {
+    flex: 2;
+}
+.x3 {
+    flex:3
+}
+/* ----------------------------- justify-content ---------------------------- */
+.JCcenter {
+    justify-content: center;
+}
+.JCspace-around {
+    justify-content: space-around;
+}
+.JCspace-between {
+    justify-content: space-between;
+}
+.JSspace-evenly {
+    justify-content: space-evenly;
+}
+/* ------------------------------- align-items ------------------------------ */
+.AIcent {
+    align-items: center;
+}
+.AIend {
+    align-items: flex-end;
+} 
+.AIstart {
+    align-items: flex-start;
+}
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/*                                    GRID                                    */
+/* -------------------------------------------------------------------------- */
+
+/* ---------------------------- columns template ---------------------------- */
+.G1col {
+    grid-template-columns: 1fr;
+}
+.G2cols {
+    grid-template-columns: 1fr 1fr;
+}
+.G3cols {
+    grid-template-columns: 1fr 1fr 1fr;
+}

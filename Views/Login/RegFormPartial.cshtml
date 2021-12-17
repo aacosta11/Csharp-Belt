@@ -1,0 +1,64 @@
+@model User
+<div class="x Wfill JCcenter">
+    <form asp-action="Register" method="POST" class="g G1col Wsum RG1">
+        <div class="g G1col">
+            <div class="x">
+                <label asp-for="Name"></label>
+                <span id="fNameL" style="color:red;"></span>
+            </div>
+            <input asp-for="Name" class="">
+            <span asp-validation-for="Name" style="color:red;" id="NameValidation"></span>
+            <p id="fNameGap">&nbsp;</p>
+        </div>
+
+        <div class="g G1col">
+            <div class="x">
+                <label asp-for="Email"></label>
+                <span id="emailL" style="color:red;"></span>
+            </div>
+            <input asp-for="Email" class="">
+            <span asp-validation-for="Email" style="color:red;" id="emailValidation"></span>
+            <p id="emailGap">&nbsp;</p>
+        </div>
+
+        <div class="g G1col">
+            <div class="x">
+                <label asp-for="Password"></label>
+                <span id="pwL" style="color:red;"></span>
+            </div>
+            <input asp-for="Password" class="">
+            <span asp-validation-for="Password" style="color:red;" id="pwValidation"></span>
+            <p id="pwGap">&nbsp;</p>
+        </div>
+
+        <div class="g G1col">
+            <div class="x">
+                <label asp-for="ConfirmPassword"></label>
+                <span id="cpwL" style="color:red;"></span>
+            </div>
+            <input asp-for="ConfirmPassword" class="">
+            <span asp-validation-for="ConfirmPassword" style="color:red;" id="cpwValidation"></span>
+            <p id="cpwGap">&nbsp;</p>
+        </div>
+
+        <input type="submit" value="register" id="formsubmit">
+    </form>
+</div>
+<script>
+    if (document.getElementById("NameValidation").innerText.length > 0) {
+        document.getElementById("fNameL").innerHTML = "*";
+        document.getElementById("fNameGap").innerHTML = "";
+    }
+    if (document.getElementById("emailValidation").innerText.length > 0) {
+        document.getElementById("emailL").innerHTML = "*";
+        document.getElementById("emailGap").innerHTML = "";
+    }
+    if (document.getElementById("pwValidation").innerText.length > 0) {
+        document.getElementById("pwL").innerHTML = "*";
+        document.getElementById("pwGap").innerHTML = "";
+    }
+    if (document.getElementById("cpwValidation").innerText.length > 0) {
+        document.getElementById("cpwL").innerHTML = "*";
+        document.getElementById("cpwGap").innerHTML = "";
+    }
+</script>
